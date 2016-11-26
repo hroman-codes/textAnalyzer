@@ -12,7 +12,7 @@
       - grab the value from the form then pass it to its matching modification function
       - then invoke each function and pass the value of the data into it
 
-//State modification functions
+// State modification functions
     # Receive the value from the event listener and fire off the logic for each filter:
       => wordCount()
         - loop through the words the user inputed in the form and count the
