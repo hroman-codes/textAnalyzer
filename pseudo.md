@@ -14,6 +14,9 @@
           length on it.
         - console.log the output of words for testing
         - update the state total word count for the current instance
+        # this can be done in two lines
+        - use split method
+        - use length method of an array
 
       => uniqueWordCount function
         - loop through the words the user inputed in the form
