@@ -3,12 +3,12 @@
 // Single state object
 $(document).ready(function(){
 
-  // let storage = (k, v) => {
-  //     totalWord: 0,
+  let state = (k, v) => {
+      totalWord: [];
   //     uniqueword: 0,
   //     averageword: 0,
   //     averageSentence:
-  // }
+};
 
 // Event listeners
   $('.js-text-form').on('submit', function(event){
@@ -21,7 +21,15 @@ $(document).ready(function(){
 
 // State modification functions
 let wordCount = (text) => {
-  alert(`I was transfered from the event listener here is the message: ${text}`);
-  let splitMessage = text.split();
-  console.log(splitMessage);
+  let splitMessage = text.split(" ");
+  // let wordCountArray = [];
+  for(var i = 0; i < splitMessage.length; i++){
+    state.totalWord.push(splitMessage[i]); // the intent it to push the wordcount to the state object to keep sepration of concerns.
+  }
+  alert(`we have ${state.totalWord.length} words in our array`);
 };
+
+// Render functions
+
+
+// Init functions
