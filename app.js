@@ -28,13 +28,13 @@ let wordCount = (formInput) => {
 
 let uniqueWord = (formInput) => {
   let uniqueWords = [];
+  console.log(`We have the following unique word/s ${uniqueWords}`);
   const splitMessage = formInput.split(" ");
   for (var i = 0; i < splitMessage.length; i++){
-        for (var j = 0; j < uniqueWords.length; j++){
-          if(splitMessage.length === uniqueWords.length) {
-            uniqueWords.push(splitMessage[i]);
-            console.log(uniqueWords);
-        {
+    if(uniqueWords.length === 0) {
+      for (var j = 0; j < uniqueWords.length; j++){
+        if (splitMessage[i] === uniqueWords[j]){
+          uniqueWords.push(splitMessage[i]);
         }
       }
     }
