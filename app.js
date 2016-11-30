@@ -22,27 +22,46 @@ let wordCount = (formInput) => {
   const splitMessage = formInput.split(" ");
   alert(`we have ${splitMessage.length} words in our array`);
   state.totalWord = splitMessage.length;
-  console.log(state.totalWord);
-
 };
 
+// hello world, hello
+// ['hello','world,','hello'] <= splitMessage
+// ['hello','world'] <= uniqueWords
 let uniqueWord = (formInput) => {
-  let uniqueWords = [];
-  console.log(`We have the following unique word/s ${uniqueWords}`);
-  const splitMessage = formInput.split(" ");
-  for (var i = 0; i < splitMessage.length; i++){
-    if(uniqueWords.length === 0) {
-      for (var j = 0; j < uniqueWords.length; j++){
-        if (splitMessage[i] === uniqueWords[j]){
-          uniqueWords.push(splitMessage[i]);
-        }
+  let uniqueWords = []; // instatiate an array
+  const splitMessage = formInput.split(" "); // split method to return an array of strings
+  for (var i = 0; i < splitMessage.length; i++){ // loop through the array of strings
+    let repeated = false;
+    if(uniqueWords.length === 0){
+      uniqueWords.push(splitMessage[i]);
+    }
+    for(var j = 0; j < uniqueWords.length; j++){
+      if(splitMessage[i] === uniqueWords[j]){
+        repeated = true;
       }
     }
-  }
-};
+    if(!repeated){
+      uniqueWords.push(splitMessage[i]);
+    }
+    //uniqueWords.push(splitMessage[i]); // push to the empty array
+    //}
+    //  if(uniqueWords.length === 1) {
+    //    newUniqueWords.push(uniqueWords[i]);
+    //    alert(`We have the following unique word/s ${newUniqueWords}`);
+   }
+   return uniqueWords;
+ };
+});
+
+
+      // for (var j = 0; j < uniqueWords.length; j++){
+      //   if (splitMessage[i] === uniqueWords[j]){
+
+
+    //}
+//  }
 
 // Render functions
 
 
 // Init functions
-});
