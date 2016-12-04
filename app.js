@@ -12,7 +12,10 @@ $(document).ready(function(){
   // Event listeners
   $('.js-text-form').on('submit', function(event){
     event.preventDefault();
-    const formInput = $('#user-text').val();
+    // I added the replace method and passed in a regex, the intent was to remove the white space being counted as a word
+    // const formInput = $('#user-text').val().replace(/\s/g, '');
+    // the right way is to add the trim method to remove the white space from both ends of the string
+    const formInput = $('#user-text').val().trim();
     wordCount(formInput);
     uniqueWord(formInput);
   });
@@ -24,44 +27,32 @@ let wordCount = (formInput) => {
   state.totalWord = splitMessage.length;
 };
 
-// hello world, hello
-// ['hello','world,','hello'] <= splitMessage
-// ['hello','world'] <= uniqueWords
+
 let uniqueWord = (formInput) => {
-  let uniqueWords = []; // instatiate an array
-  const splitMessage = formInput.split(" "); // split method to return an array of strings
-  for (var i = 0; i < splitMessage.length; i++){ // loop through the array of strings
-    let repeated = false;
-    if(uniqueWords.length === 0){
-      uniqueWords.push(splitMessage[i]);
-    }
-    for(var j = 0; j < uniqueWords.length; j++){
-      if(splitMessage[i] === uniqueWords[j]){
+  let uniqueWords = [];
+  const splitMessage = formInput.split(" "); // why am I doing this twice once in wordCount and uniqueWord function?
+  // set a vairable to be the mechinism to hold the false value.
+    for(i = 0; i < splitMessage.length; i++ ){
+      let repeated = false;
+      if (uniqueWords.length === 0) {
+        uniqueWords.push(splitMessage[i]);
+      }
+    for(j = 0; j < uniqueWords.length; j++) {
+      if (splitMessage[i] === uniqueWords[j]) {
         repeated = true;
+        }
+      }
+      if (!repeated) {
+        uniqueWords.push(splitMessage[i]);
       }
     }
-    if(!repeated){
-      uniqueWords.push(splitMessage[i]);
-    }
-    //uniqueWords.push(splitMessage[i]); // push to the empty array
-    //}
-    //  if(uniqueWords.length === 1) {
-    //    newUniqueWords.push(uniqueWords[i]);
-    //    alert(`We have the following unique word/s ${newUniqueWords}`);
-   }
-   return uniqueWords;
- };
-});
+    console.log(uniqueWords);
+    return uniqueWords;
+};
 
-
-      // for (var j = 0; j < uniqueWords.length; j++){
-      //   if (splitMessage[i] === uniqueWords[j]){
-
-
-    //}
-//  }
 
 // Render functions
 
 
 // Init functions
+});
