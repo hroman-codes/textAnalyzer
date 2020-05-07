@@ -14,15 +14,12 @@
 
 // State modification functions
     # Receive the value from the event listener and fire off the logic for each filter:
-      => wordCount()
-        - loop through the words the user inputed in the form and count the
-          length on it.
+      => totalWord()
+        - split() the incoming string into an array
         - console.log the output of words for testing
-        - update the state total word count for the current instance
-        # this can be done in two lines <=============== Recommendation from Wences
-          - use split method
-          - use length method of an array
-        - then invoke the wordCountRender function
+        - filter out the falsy values
+        - run the length of the array 
+        - update the state with the result length of the array
 
       => uniqueWordCount()
         - loop through the words the user inputed in the form
@@ -47,7 +44,7 @@
         ######## Pick up from here
 
 // Render functions
-  => wordCountRender()
+  => renderTotalWord()
     - update html with new unique word count
 
   => uniqueWordRender()
