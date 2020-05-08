@@ -22,11 +22,15 @@
         - update the state with the result length of the array
 
       => uniqueWordCount()
-        - loop through the words the user inputed in the form
-        - find the same words that appear in the user input
-        - count the same words that I found ^^
-        - update the state unique word count
-        - then invoke the wordCountRender function
+        - Create a REPEATED LETTER array
+        - Create an OUTLER LOOP that sets the first pointer the be evaluted
+          - SET EVAL LETTER to equal the first pointer in the OUTER LOOP
+          - Start the INNER LOOP @(OL + 1) since the OL is being evalutated already
+            - If (OL + 1) is undefinded bounce out the loop
+            - Compare IL[i] === SEL 
+              - if so push(IL[i]) to RLA
+              - else keep looping through
+        - Return the length of the REPEATED LETTER array    
 
       => averageWordLength()
         - take the results of the current wordCount
