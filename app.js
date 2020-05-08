@@ -4,7 +4,7 @@
 $(document).ready(function(){
   let state = {
     totalWord: 0,
-    // uniqueword: 0,
+    uniqueWord: 0,
     // averageword: 0,
     // averageSentence:
   };
@@ -14,44 +14,43 @@ $(document).ready(function(){
     element.empty().append(`<span> ${state.totalWord} </span>`)
   }
 
-
   // State modification functions
   let totalWord = (state, formInput) => {
-    let splitMessage = formInput.split(" ");
-    let filtered = splitMessage.filter(Boolean);
-
-    state.totalWord = filtered.length;
+    state.totalWord = formInput.length;
   };
 
+  let uniqueWord = (state, formInput) => {
+    let uniqueWords = [];
 
-// let uniqueWord = (formInput) => {
-//   let uniqueWords = [];
-//   const splitMessage = formInput.split(" "); // why am I doing this twice once in wordCount and uniqueWord function?
-//   // set a vairable to be the mechinism to hold the false value.
-//     for(i = 0; i < splitMessage.length; i++ ){
-//       let repeated = false;
-//       if (uniqueWords.length === 0) {
-//         uniqueWords.push(splitMessage[i]);
-//       }
-//     for(j = 0; j < uniqueWords.length; j++) {
-//       if (splitMessage[i] === uniqueWords[j]) {
-//         repeated = true;
-//         }
-//       }
-//       if (!repeated) {
-//         uniqueWords.push(splitMessage[i]);
-//       }
-//     }
-//     console.log(uniqueWords);
-//     return uniqueWords;
-// };
+    for (let i = 0; i < formInput.length; i++) {
+      let evalLetter = formInput[i];
+
+        for (let j = i + 1; j < formInput.length; j++) {
+          if (formInput[j] === 'null') return;
+
+          if (evalLetter === formInput[j]) {
+            uniqueWords.push(formInput[i])
+          } else {
+            continue;
+          }
+        }
+    }
+
+    state.uniqueWord = uniqueWords.length;
+  }
 
   // Event listeners
   $('.js-text-form').on('submit', function(event){
-    const formInput = $('#user-text').val().trim();
     event.preventDefault();
 
-    totalWord(state, formInput);
+    let formInput = $('#user-text').val().trim();
+    let splitMessage = formInput.split(" ");
+    let filtered = splitMessage.filter(Boolean);
+
+    totalWord(state, filtered);
     renderTotalWord(state, $("#s1"));
+
+    uniqueWord(state, filtered);
+    renderUniqueWord(state, $("#s2"));
   });
 });
