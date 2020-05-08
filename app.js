@@ -11,7 +11,11 @@ $(document).ready(function(){
 
   // Render functions
   let renderTotalWord = (state, element) => {
-    element.empty().append(`<span> ${state.totalWord} </span>`)
+    element.empty().append(`<span> ${state.totalWord} </span>`);
+  }
+
+  let renderUniqueWord = (state, element) => {
+    element.empty().append(`<span> ${state.uniqueWord} </span>`);
   }
 
   // State modification functions
