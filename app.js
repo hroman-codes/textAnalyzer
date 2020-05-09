@@ -57,7 +57,6 @@ $(document).ready(function(){
         }
     }
 
-    console.log('uniqueWords:', uniqueWords);
     for (let unique of uniqueWords) {
       state.uniqueWord.listOfUniqueWords.push(unique);
     }
@@ -76,6 +75,7 @@ $(document).ready(function(){
     totalWord(state, filtered);
     renderTotalWord(state, $("#s1"));
 
+    $('#s3').empty();
     uniqueWord(state, filtered);
     listOfUniqueWords(state, $('#s3'));
     renderUniqueWordCount(state, $("#s2"));
