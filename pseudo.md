@@ -30,7 +30,8 @@
             - Compare IL[i] === SEL 
               - if so push(IL[i]) to RLA
               - else keep looping through
-        - Return the length of the REPEATED LETTER array    
+        - Return the length of the REPEATED LETTER array to get the amount of unique words
+        - Create another loop that pushes the unique words to the state object  
 
       => averageWordLength()
         - take the results of the current wordCount
@@ -53,6 +54,7 @@
 
   => uniqueWordRender()
     - update html with unique word count
+    - update html with a list of unique words
 
   => averageWordRender()
     - update html with average word count
