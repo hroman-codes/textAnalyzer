@@ -4,19 +4,34 @@
 $(document).ready(function(){
   let state = {
     totalWord: 0,
-    uniqueWord: 0,
+    uniqueWord: {
+      uniqueWordCount: 0,
+      listOfUniqueWords: []
+    }
     // averageword: 0,
     // averageSentence:
   };
 
   // Render functions
   let renderTotalWord = (state, element) => {
-    element.empty().append(`<span> ${state.totalWord} </span>`);
-  }
+    element.empty().append(` ${state.totalWord}`);
+  };
 
-  let renderUniqueWord = (state, element) => {
-    element.empty().append(`<span> ${state.uniqueWord} </span>`);
-  }
+  let renderUniqueWordCount = (state, element) => {
+    element.empty().append(` ${state.uniqueWord.uniqueWordCount}`);
+  };
+
+  let listOfUniqueWords = (state, element) => {
+    $('.js-text-form').trigger('reset');
+
+    state.uniqueWord.listOfUniqueWords.map(word => {
+      
+      let item = document.createElement('li');
+      item.appendChild(document.createTextNode(word));
+      
+      element.append(item);
+    });
+  };
 
   // State modification functions
   let totalWord = (state, formInput) => {
@@ -25,14 +40,16 @@ $(document).ready(function(){
 
   let uniqueWord = (state, formInput) => {
     let uniqueWords = [];
+    state.uniqueWord.listOfUniqueWords = [];
 
     for (let i = 0; i < formInput.length; i++) {
-      let evalLetter = formInput[i];
+      let evalword = formInput[i];
 
         for (let j = i + 1; j < formInput.length; j++) {
+
           if (formInput[j] === 'null') return;
 
-          if (evalLetter === formInput[j]) {
+          if (evalword === formInput[j]) {
             uniqueWords.push(formInput[i])
           } else {
             continue;
@@ -40,7 +57,12 @@ $(document).ready(function(){
         }
     }
 
-    state.uniqueWord = uniqueWords.length;
+    console.log('uniqueWords:', uniqueWords);
+    for (let unique of uniqueWords) {
+      state.uniqueWord.listOfUniqueWords.push(unique);
+    }
+
+    state.uniqueWord.uniqueWordCount = uniqueWords.length;
   }
 
   // Event listeners
@@ -55,6 +77,8 @@ $(document).ready(function(){
     renderTotalWord(state, $("#s1"));
 
     uniqueWord(state, filtered);
-    renderUniqueWord(state, $("#s2"));
+    listOfUniqueWords(state, $('#s3'));
+    renderUniqueWordCount(state, $("#s2"));
+
   });
 });
