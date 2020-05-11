@@ -35,7 +35,6 @@
 
       => averageWordLength()
         - Split up the incoming sentence/string
-        - Take the forst word and split/count the length
         - Create a variable to keep track of the amount of letters in each word
         - Create the first loop pointing to the first word
         - Take the first word and split it up into individual chars
