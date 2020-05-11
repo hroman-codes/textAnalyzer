@@ -21,7 +21,7 @@ $(document).ready(function(){
     element.empty().append(` ${state.uniqueWord.uniqueWordCount}`);
   };
 
-  let listOfUniqueWords = (state, element) => {
+  let renderListOfUniqueWords = (state, element) => {
     $('.js-text-form').trigger('reset');
 
     state.uniqueWord.listOfUniqueWords.map(word => {
@@ -32,6 +32,10 @@ $(document).ready(function(){
       element.append(item);
     });
   };
+
+  let renderAverageWordLength = (state, element) => {
+    element.empty().append(` ${state.averageWordLength}`);
+  }
 
   // State modification functions
   let totalWord = (state, formInput) => {
@@ -75,7 +79,7 @@ $(document).ready(function(){
       amountOfWords += chars.length;
     }
 
-    state.averageWordLength = lettersInEachWord / amountOfWords;
+    state.averageWordLength = Number((lettersInEachWord / amountOfWords).toFixed(2));
   };
 
   // Event listeners
@@ -91,11 +95,11 @@ $(document).ready(function(){
 
     $('#s3').empty();
     uniqueWord(state, filtered);
-    listOfUniqueWords(state, $('#s3'));
+    renderListOfUniqueWords(state, $('#s3'));
     renderUniqueWordCount(state, $("#s2"));
 
     averageWordLength(state, filtered);
-
+    renderAverageWordLength(state, $('#s4'));
 
   });
 });
