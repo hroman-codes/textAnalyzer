@@ -59,7 +59,7 @@
     - update html with unique word count
     - update html with a list of unique words
 
-  => averageWordRender()
+  => averageWordLengthRender()
     - update html with average word count
 
   => averageSentenceRender()
