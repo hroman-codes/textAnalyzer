@@ -7,8 +7,8 @@ $(document).ready(function(){
     uniqueWord: {
       uniqueWordCount: 0,
       listOfUniqueWords: []
-    }
-    // averageword: 0,
+    },
+    averageWordLength: 0
     // averageSentence:
   };
 
@@ -42,16 +42,15 @@ $(document).ready(function(){
     let uniqueWords = [];
     state.uniqueWord.listOfUniqueWords = [];
 
-    debugger
     for (let i = 0; i < formInput.length; i++) {
       let evalword = formInput[i];
-        // debugger
+
         for (let j = i + 1; j < formInput.length; j++) {
 
           if (formInput[j] === 'null') return;
 
           if (evalword === formInput[j] && !uniqueWords.includes(evalword)) {
-            uniqueWords.push(formInput[i])
+            uniqueWords.push(formInput[i]);
           } else {
             continue;
           }
@@ -63,7 +62,21 @@ $(document).ready(function(){
     }
 
     state.uniqueWord.uniqueWordCount = uniqueWords.length;
-  }
+  };
+
+  let averageWordLength = (state, uniqueWords) => {
+    console.log('uniqueWords;', uniqueWords);
+
+    let lettersInEachWord = uniqueWords.length;
+    let amountOfWords = 0;
+
+    for (let [index, value] of uniqueWords.entries()) {
+      let chars = value.split('');
+      amountOfWords += chars.length;
+    }
+
+    state.averageWordLength = lettersInEachWord / amountOfWords;
+  };
 
   // Event listeners
   $('.js-text-form').on('submit', function(event){
@@ -80,6 +93,9 @@ $(document).ready(function(){
     uniqueWord(state, filtered);
     listOfUniqueWords(state, $('#s3'));
     renderUniqueWordCount(state, $("#s2"));
+
+    averageWordLength(state, filtered);
+
 
   });
 });
