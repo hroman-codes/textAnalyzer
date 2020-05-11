@@ -42,14 +42,15 @@ $(document).ready(function(){
     let uniqueWords = [];
     state.uniqueWord.listOfUniqueWords = [];
 
+    debugger
     for (let i = 0; i < formInput.length; i++) {
       let evalword = formInput[i];
-
+        // debugger
         for (let j = i + 1; j < formInput.length; j++) {
 
           if (formInput[j] === 'null') return;
 
-          if (evalword === formInput[j]) {
+          if (evalword === formInput[j] && !uniqueWords.includes(evalword)) {
             uniqueWords.push(formInput[i])
           } else {
             continue;

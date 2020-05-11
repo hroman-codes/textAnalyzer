@@ -27,7 +27,7 @@
           - SET EVAL LETTER to equal the first pointer in the OUTER LOOP
           - Start the INNER LOOP @(OL + 1) since the OL is being evalutated already
             - If (OL + 1) is undefinded bounce out the loop
-            - Compare IL[i] === SEL 
+            - Compare IL[i] === SEL and the repeated letter array does not include IL[i]
               - if so push(IL[i]) to RLA
               - else keep looping through
         - Return the length of the REPEATED LETTER array to get the amount of unique words
