@@ -34,10 +34,14 @@
         - Create another loop that pushes the unique words to the state object  
 
       => averageWordLength()
-        - take the results of the current wordCount
-        - count the characters for each word in the wordCount
-        - generate an average computation for each word
-        - update the state with the average
+        - Split up the incoming sentence/string
+        - Take the forst word and split/count the length
+        - Create a variable to keep track of the amount of letters in each word
+        - Create the first loop pointing to the first word
+        - Take the first word and split it up into individual chars
+        - On each [ith] element append it to the variable keeping track of letters, count, and sum up on each iteration
+        - When done with loop 
+        - Take the sum of letters and divide by the total words/length of the string/array.
 
       => averageSentenceLength()
         - take the results of the current wordCount
