@@ -8,8 +8,8 @@ $(document).ready(function(){
       uniqueWordCount: 0,
       listOfUniqueWords: []
     },
-    averageWordLength: 0
-    // averageSentence:
+    averageWordLength: 0,
+    quantityOfSentenceLength: 0
   };
 
   // Render functions
@@ -35,6 +35,10 @@ $(document).ready(function(){
 
   let renderAverageWordLength = (state, element) => {
     element.empty().append(` ${state.averageWordLength}`);
+  }
+
+  let renderQuantityOfSentenceLength = (state, element) => {
+    element.empty().append(` ${state.quantityOfSentenceLength}`)
   }
 
   // State modification functions
@@ -82,6 +86,12 @@ $(document).ready(function(){
     state.averageWordLength = Number((lettersInEachWord / amountOfWords).toFixed(2));
   };
 
+  let quantityOfSentenceLength = (state, uniqueWords) => {
+    let amountOfSentences = uniqueWords.length;
+
+    state.quantityOfSentenceLength = amountOfSentences;
+  } 
+
   // Event listeners
   $('.js-text-form').on('submit', function(event){
     event.preventDefault();
@@ -89,6 +99,10 @@ $(document).ready(function(){
     let formInput = $('#user-text').val().trim();
     let splitMessage = formInput.split(" ");
     let filtered = splitMessage.filter(Boolean);
+    let filteredByPunctuation = formInput.match(/.*?[?!.]/g);
+
+    console.log('formInput:', formInput);
+    console.log('filteredByPunctuation:', filteredByPunctuation);
 
     totalWord(state, filtered);
     renderTotalWord(state, $("#s1"));
@@ -101,5 +115,7 @@ $(document).ready(function(){
     averageWordLength(state, filtered);
     renderAverageWordLength(state, $('#s4'));
 
+    quantityOfSentenceLength(state, filteredByPunctuation);
+    renderQuantityOfSentenceLength(state, $('#s5'));
   });
 });

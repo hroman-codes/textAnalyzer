@@ -43,26 +43,18 @@
         - Take the sum of letters and divide by the total words/length of the string/array.
 
       => averageSentenceLength()
-        - take the results of the current wordCount
-        - loop through the words
-        - count the length of the words in that current instance
-        - count the breaks in words to establish a new word
-        - update the state with the average sentence length
-
-        ######## Pick up from here
+        - Take the incoming word 
 
 // Render functions
   => renderTotalWord()
     - update html with new unique word count
 
-  => uniqueWordRender()
+  => renderUniqueWord()
     - update html with unique word count
     - update html with a list of unique words
 
-  => averageWordLengthRender()
+  => renderAverageWordLength()
     - update html with average word count
 
-  => averageSentenceRender()
+  => renderAverageSentenceRender()
     - update html with average  sentence word count
-// Init functions
-  #
