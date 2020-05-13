@@ -1,6 +1,6 @@
 <!-- ![imageHere](directory) -->
 
-### Thinkful Challenge: Text Analyzer
+### Text Analyzer
 ---
 > In this challenge, I built a small web app that runs basic text analytics on user submitted text. Displays the following 4 metrics:
 
@@ -11,8 +11,23 @@
 
 The program should print each of these metrics in the appropriate area in the results section.
 
-
 ### Demo
 ---
 https://getromandev.github.io/textAnalyzer/
 
+### Tech
+---
+- HTML
+- CSS
+- jQuery
+
+
+### Architecture
+---
+![Managing Application State](/img/State_Architecture.png)
+
+- Single State Object
+- Render Functions
+- State Modifications Functions
+- Event Listeners
+- [Pseudo Code](https://github.com/getromandev/textAnalyzer/blob/master/pseudo.md)
