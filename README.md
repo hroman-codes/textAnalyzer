@@ -1,4 +1,4 @@
-<!-- ![imageHere](directory) -->
+![Text Analyzer](/img/Text_Analyzer_Demo.gif)
 
 ### Text Analyzer
 ---
